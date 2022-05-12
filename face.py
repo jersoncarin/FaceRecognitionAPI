@@ -34,6 +34,9 @@ def detect_face_id():
     # Get the list of images encoded
     encoded_images_list = encode_images(images)
 
+    if len(encoded_images_list) < 1:
+        return None
+
     # Check if the source id is fill and source image
     if source is not None:
         faces_frame_location = face_recognition.face_locations(source)
@@ -45,7 +48,7 @@ def detect_face_id():
             # Find the lowest index so that is the best match
             bestMatchIndex = np.argmin(face_distance)
             # Check if the index is the best match of the face
-            if matches[bestMatchIndex]:
+            if matches[bestMatchIndex] and image_ids[bestMatchIndex]:
                 return image_ids[bestMatchIndex]
     return None
                 
