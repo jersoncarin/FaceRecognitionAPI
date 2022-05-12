@@ -39,6 +39,7 @@ def verify_face(image: Data):
 
             return JSONResponse(status_code=status.HTTP_200_OK, content={"face_id": face_id})
     except BaseException  as e:
+        print(e)
         return JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, content={"status": 500, "message": str(e)})
 
 @app.post("/register_face")
