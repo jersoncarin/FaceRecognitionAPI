@@ -26,6 +26,9 @@ class FaceData(BaseModel):
 @app.post("/face_verify")
 def verify_face(image: Data):
     try:
+        if not os.path.exists(os.path.join(os.getcwd(), 'source')):
+            os.mkdir(os.path.join(os.getcwd(), 'source'))
+
         with open(f'{face.SOURCE_PATH}', "wb") as f:
             image_data = image.image.replace('data:image/png;base64','').replace('data:image/jpeg;base64','')
             f.write(base64.b64decode(image_data))
