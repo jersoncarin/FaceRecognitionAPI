@@ -48,7 +48,10 @@ def detect_face_id():
             # Find the lowest index so that is the best match
             bestMatchIndex = np.argmin(face_distance)
             # Check if the index is the best match of the face
-            if matches[bestMatchIndex] and image_ids[bestMatchIndex]:
-                return image_ids[bestMatchIndex]
+            try:
+                if matches[bestMatchIndex] and image_ids[bestMatchIndex]:
+                    return image_ids[bestMatchIndex]
+            except:
+                return None
     return None
                 
