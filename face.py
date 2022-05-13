@@ -15,12 +15,12 @@ def detect_face_id():
     image_ids = []
 
     # Read all images using opencv
-    for image in image_list:
-        images.append(cv2.imread(f'{IMAGES_PATH}{os.sep}{image}'))
+    # for image in image_list:
+    #     images.append(cv2.imread(f'{IMAGES_PATH}{os.sep}{image}'))
 
-        # Format of the image name is image_{id}_dataset.png
-        # so we need to get the second value of list to get the id
-        image_ids.append(image.split('_')[1])
+    #     # Format of the image name is image_{id}_dataset.png
+    #     # so we need to get the second value of list to get the id
+    #     image_ids.append(image.split('_')[1])
 
     # Encode the images
     def encode_images(images):
@@ -32,9 +32,7 @@ def detect_face_id():
         return encoded_list
 
     # Get the list of images encoded
-    encoded_images_list = encode_images(images)
-
-    print(encoded_images_list)
+    #encoded_images_list = encode_images(images)
 
     # if len(encoded_images_list) < 1:
     #     return None
