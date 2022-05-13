@@ -20,11 +20,16 @@ def detect_face_id():
     # Encode the images
     def encode_images(images):
         encoded_list = []
-        for img in images:
-            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-            encoded = face_recognition.face_encodings(img)[0]
-            encoded_list.append(encoded)
-        return encoded_list
+
+        try:
+            for img in images:
+                img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+                encoded = face_recognition.face_encodings(img)[0]
+                encoded_list.append(encoded)
+                
+            return encoded_list
+        except:
+            return encoded_list 
 
     # Get the list of images encoded
     encoded_images_list = encode_images(images)
