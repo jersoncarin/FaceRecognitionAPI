@@ -5,6 +5,7 @@ from pydantic import BaseModel
 import base64
 import face
 import os
+import re
 
 if not os.path.exists(face.IMAGES_PATH):
     os.mkdir(face.IMAGES_PATH)
@@ -37,7 +38,7 @@ def verify_face(image: Data):
             if face_id is None:
                 return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={"status": 404, "message": "Face ID not found in the server."})
 
-            return JSONResponse(status_code=status.HTTP_200_OK, content={"face_id": face_id})
+            return JSONResponse(status_code=status.HTTP_200_OK, content={"face_id": re.sub('\D', '', face_id)})
     except BaseException  as e:
         print(e)
         return JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, content={"status": 500, "message": str(e)})
