@@ -14,6 +14,8 @@ def detect_face_id():
     source = cv2.imread(SOURCE_PATH)
     image_ids = []
 
+    print(image_list)
+
     # Read all images using opencv
     # for image in image_list:
     #     images.append(cv2.imread(f'{IMAGES_PATH}{os.sep}{image}'))
